@@ -1,10 +1,12 @@
-package test.java;
+package org.playground.streamapi;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayOperations {
 
@@ -15,7 +17,7 @@ public class ArrayOperations {
         int[] array = new int[2];
         int[] expected = new int[]{0, 0};
 
-        Assert.assertArrayEquals(expected, array);
+        assertArrayEquals(expected, array);
     }
 
     @Test
@@ -24,7 +26,7 @@ public class ArrayOperations {
         int[] expected = new int[]{5, 5};
 
         Arrays.fill(array, 5);
-        Assert.assertArrayEquals(expected, array);
+        assertArrayEquals(expected, array);
     }
 
     @Test
@@ -35,7 +37,7 @@ public class ArrayOperations {
 
         int[] expected = {1, 2, 3, 4, 5};
 
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -43,14 +45,14 @@ public class ArrayOperations {
         int[] array1 = {1, 2, 3, 4};
         int[] array2 = {1, 2, 3, 4};
 
-        Assert.assertTrue(Arrays.equals(array1, array2));
+        assertTrue(Arrays.equals(array1, array2));
     }
 
     @Test
     public void arrayEmpty() {
         int[] array = {};
         boolean isEmpty = array == null || array.length == 0;
-        Assert.assertTrue(isEmpty);
+        assertTrue(isEmpty);
     }
 
     @Test
@@ -68,7 +70,7 @@ public class ArrayOperations {
         Set<Integer> set = new HashSet<>(integers);
         List<Integer> actual = new ArrayList<>(set);
 
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -99,7 +101,7 @@ public class ArrayOperations {
 
         String[] strings = Arrays.stream(array).mapToObj(x -> String.format("Val%d", x)).toArray(String[]::new);
 
-        Assert.assertEquals("Val1", strings[0]);
+        assertEquals("Val1", strings[0]);
     }
 
     @Test
@@ -111,7 +113,7 @@ public class ArrayOperations {
 
         int[] expected = strings.stream().mapToInt(Integer::parseInt).toArray();
 
-        Assert.assertEquals(1, expected[0]);
+        assertEquals(1, expected[0]);
     }
 
     @Test
@@ -120,7 +122,7 @@ public class ArrayOperations {
         Arrays.sort(strings);
         int expected = Arrays.binarySearch(strings, "2");
 
-        Assert.assertEquals(0, expected);
+        assertEquals(0, expected);
     }
 
 

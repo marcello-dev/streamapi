@@ -1,12 +1,13 @@
-package test.java;
+package org.playground.streamapi;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListOperations {
 
@@ -19,8 +20,8 @@ public class ListOperations {
         expected.add(0);
         expected.add(0);
 
-        Assert.assertEquals(3,actual.size());
-        Assert.assertEquals(expected,actual);
+        assertEquals(3,actual.size());
+        assertEquals(expected,actual);
     }
 
     @Test
@@ -33,8 +34,8 @@ public class ListOperations {
         expected.add(1);
         expected.add(1);
 
-        Assert.assertEquals(3,actual.size());
-        Assert.assertEquals(expected,actual);
+        assertEquals(3,actual.size());
+        assertEquals(expected,actual);
     }
     @Test
     public void initializeIntegerListToVal2(){
@@ -47,7 +48,7 @@ public class ListOperations {
         expected.add(1);
         expected.add(1);
 
-        Assert.assertEquals(3,actual.size());
-        Assert.assertEquals(expected,actual);
+        assertEquals(3,actual.size());
+        assertEquals(expected,actual);
     }
 }

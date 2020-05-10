@@ -1,4 +1,4 @@
-package main.java.model;
+package org.playground.streamapi;
 
 import java.util.List;
 

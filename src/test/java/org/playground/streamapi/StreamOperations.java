@@ -1,10 +1,8 @@
-package test.java;
+package org.playground.streamapi;
 
-import main.java.model.Driver;
-import main.java.model.Vehicle;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +10,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class StreamOperations {
 
     private List<Driver> drivers;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         drivers = new ArrayList<>();
         Driver d1 = new Driver("a","b",null);
@@ -34,8 +34,8 @@ public class StreamOperations {
         boolean anyRealDrivers = drivers.stream().anyMatch(Driver::isRealDriver);
         boolean anyCalleda = drivers.stream().anyMatch(d -> d.getName().equals("a"));
 
-        Assert.assertTrue(anyRealDrivers);
-        Assert.assertTrue(anyCalleda);
+        assertTrue(anyRealDrivers);
+        assertTrue(anyCalleda);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class StreamOperations {
 
         int[] actual = Arrays.stream(array).filter((x)-> x%2==0).toArray();
 
-        Assert.assertArrayEquals(expected,actual);
+        assertArrayEquals(expected,actual);
     }
 
     @Test
@@ -55,11 +55,11 @@ public class StreamOperations {
 
         long emptyStrings = strings.stream().filter(String::isEmpty).count();
 
-        Assert.assertEquals(1,emptyStrings);
+        assertEquals(1,emptyStrings);
     }
 
     @Test
-    public void flatMap(){
+    public void flatMap() {
         List<String> expected = drivers.get(0).getInfo();
         expected.addAll(drivers.get(1).getInfo());
 
