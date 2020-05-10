@@ -24,18 +24,22 @@ public class StreamOperations {
         Driver d2 = new Driver("c","d",new Vehicle(2));
         d2.setInfo(new ArrayList<>(Arrays.asList("documento1","patente")));
 
-
         drivers.add(d1); drivers.add(d2);
     }
 
     @Test
-    public void matchAny(){
+    public void matchAny_staticMethod(){
         // Reference to a Static Method
         boolean anyRealDrivers = drivers.stream().anyMatch(Driver::isRealDriver);
-        boolean anyCalleda = drivers.stream().anyMatch(d -> d.getName().equals("a"));
 
         assertTrue(anyRealDrivers);
-        assertTrue(anyCalleda);
+    }
+
+    @Test
+    public void matchAny_if_predicate(){
+        boolean anyCalledA = drivers.stream().anyMatch(d -> d.getName().equals("a"));
+
+        assertTrue(anyCalledA);
     }
 
     @Test
