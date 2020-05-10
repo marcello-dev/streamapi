@@ -64,13 +64,30 @@ public class StreamOperations {
 
     @Test
     public void flatMap() {
-        List<String> expected = drivers.get(0).getInfo();
-        expected.addAll(drivers.get(1).getInfo());
+        List<String> expected = Arrays.asList("patente","libretto","documento1","patente");
 
-        Stream<String> info = drivers.stream().flatMap(d -> d.getInfo().stream());
-        List<String> infoStrings = info.collect(Collectors.toList());
+        // Get list of all info of the drivers
+        List<String> allInfo = drivers.stream().flatMap(d -> d.getInfo().stream()).collect(Collectors.toList());
 
-        //Assert.assertEquals(expected,infoStrings);
+        assertEquals(expected,allInfo);
+    }
+
+    @Test
+    public void takeWhile_orderedStream() {
+        Stream<Integer> numbers = Stream.of(2, 4, 6, 8, 9, 10, 12);
+
+        Stream<Integer> actual = numbers.takeWhile(number -> number % 2 == 0);
+
+        assertArrayEquals(Stream.of(2, 4, 6, 8).toArray(),actual.toArray());
+    }
+
+    @Test
+    public void dropWhile_orderedStream() {
+        Stream<Integer> numbers = Stream.of(2, 4, 6, 8, 9, 10, 12);
+
+        Stream<Integer> actual = numbers.dropWhile(number -> number % 2 == 0);
+
+        assertArrayEquals(Stream.of(9, 10, 12).toArray(),actual.toArray());
     }
 
 }
